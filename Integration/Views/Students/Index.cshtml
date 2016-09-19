@@ -1,0 +1,109 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    table, tr, td, th {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 10px;
+    }
+    .tablehover {
+        cursor: pointer;
+    }
+</style>
+
+<table id="tblcontainer" ng-controller="studentController">
+    <tbody>
+        <tr>
+            <td>
+                <table id="tblcrud">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span>Student Name</span>
+                            </td>
+                            <td>
+                                <input type="text" id="StudentName" ng-model="StudentName" placeholder="Click New or Select" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>Student Roll No</span>
+                            </td>
+                            <td>
+                                <input type="text" id="StudentRollNo" ng-model="StudentRollNo" placeholder="Click New or Select" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>Student Department</span>
+                            </td>
+                            <td>
+                                <input type="text" id="StudentDepartment" required ng-model="StudentDepartment" placeholder="Click New or Select" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>Student Batch No</span>
+                            </td>
+                            <td>
+                                <input type="text" id="StudentbatchNo" required ng-model="StudentbatchNo" placeholder="Click New or Select" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>Student Year</span>
+                            </td>
+                            <td>
+                                <input type="text" id="StudentYear" required ng-model="StudentYear" placeholder="Click New or Select" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="submit" class="btn btninfo" id="new" value="New" ng-click="clear()">New</button>
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btninfo" id="add" value="Add" ng-click="add()">Add</button>  
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btninfo" id="delete" value="Delete" ng-click="delete()">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>{{ Message }}</div>
+            </td>
+            <td>
+                <div id="dvcollection">
+                    <table>
+                        <tr>
+                            <th> Student Name</th>
+                            <th> Student Roll No</th>
+                            <th> Student Department</th>
+                            <th> Student Batch No</th>
+                            <th> Student Year</th>
+                        </tr>
+                        <tbody ng-repeat="Std in Students">
+                            <tr ng-click="get(Std)"/>
+                            <tr>
+                                <td>{{Std.StudentName}}</td>
+                                <td>{{Std.StudentRollNo}}</td>
+                                <td>{{Std.StudentDepartment}}</td>
+                                <td>{{Std.StudentbatchNo}}</td>
+                                <td>{{Std.StudentYear}}</td>
+                                <td>
+                                    <button ng-click="get(Std)">Select</button>
+                                </td>
+                                <td>
+                                    <button ng-click="edit(Std)">Edit</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
