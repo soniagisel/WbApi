@@ -43,6 +43,13 @@
             promisePut.then(function (pl) {
                 console.log(pl);
                 console.log($scope.ID);
+                $scope.ID = pl.ID;
+                $scope.StudentName = pl.StudentName;
+                $scope.StudentRollNo = pl.StudentRollNo;
+                $scope.StudentDepartment = pl.StudentDepartment;
+                $scope.StudentbatchNo = pl.StudentbatchNo;
+                $scope.StudentYear = pl.StudentYear;
+                $scope.IsNewRecord = 0;
                 $scope.Message = "Updated Succesfully";
                 loadRecords();
             }), function (err) {
