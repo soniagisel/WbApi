@@ -18,7 +18,7 @@
         //In this method if IsNewRecord is not zero, then update student,
         //else Create the student information to the server.
         var Student;
-
+        var EditedStudent;
         $scope.add = function (Id, Student) {
             //if the flag is 1 then it is new record
             Student = {
@@ -39,17 +39,20 @@
         }
 
         $scope.edit = function (Student) {
-            var promisePut = StudentService.update($scope.ID, Student);
+            EditedStudent = {
+                ID: $scope.ID,
+                StudentName: $scope.StudentName,
+                StudentRollNo: $scope.StudentRollNo,
+                StudentDepartment: $scope.StudentDepartment,
+                StudentbatchNo: $scope.StudentbatchNo,
+                StudentYear: $scope.StudentYear
+            }
+
+            var promisePut = StudentService.update($scope.ID, EditedStudent);
             promisePut.then(function (pl) {
                 console.log(pl);
                 console.log($scope.ID);
-                $scope.ID = pl.ID;
-                $scope.StudentName = pl.StudentName;
-                $scope.StudentRollNo = pl.StudentRollNo;
-                $scope.StudentDepartment = pl.StudentDepartment;
-                $scope.StudentbatchNo = pl.StudentbatchNo;
-                $scope.StudentYear = pl.StudentYear;
-                $scope.IsNewRecord = 0;
+                
                 $scope.Message = "Updated Succesfully";
                 loadRecords();
             }), function (err) {
